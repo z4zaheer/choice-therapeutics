@@ -1,0 +1,59 @@
+---
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
+import diagnostics from '../assets/images/diagnostics.jpg';
+import ward from '../assets/images/ward.jpg';
+
+const categories = [
+  { icon: 'stethoscope', title: 'Diagnostic equipment', text: 'BP monitors, stethoscopes, glucometers, ECG and more' },
+  { icon: 'activity', title: 'Patient monitoring', text: 'Vital signs monitors, pulse oximeters, infusion pumps' },
+  { icon: 'bed', title: 'Hospital furniture', text: 'Beds, examination couches, trolleys and wheelchairs' },
+  { icon: 'syringe', title: 'Theatre & surgical', text: 'Surgical instruments, lights, suction and sterilisation' },
+  { icon: 'microscope', title: 'Laboratory', text: 'Microscopes, centrifuges and lab essentials' },
+  { icon: 'package', title: 'Consumables & PPE', text: 'Gloves, syringes, dressings and everyday supplies' },
+] as const;
+---
+
+<section id="equipment" class="py-20 sm:py-28">
+  <div class="mx-auto grid max-w-7xl items-center gap-14 px-5 sm:px-8 lg:grid-cols-12">
+    <div class="lg:col-span-5">
+      <p class="text-sm font-bold uppercase tracking-widest text-teal-600">Medical Equipment</p>
+      <h2 class="mt-3 text-3xl font-extrabold sm:text-4xl">Reliable equipment for every level of care</h2>
+      <p class="mt-4 text-lg leading-relaxed text-slate-600">
+        Whether you are setting up a new clinic or upgrading a hospital department, we help you choose the right equipment for your
+        needs and budget, then deliver, install and support it.
+      </p>
+      <div class="relative mt-8 grid grid-cols-2 gap-4">
+        <Image src={diagnostics} alt="Diagnostic medical supplies including a stethoscope" widths={[300, 600]} sizes="(min-width: 1024px) 20vw, 50vw" class="aspect-square rounded-2xl object-cover" />
+        <Image src={ward} alt="Hospital ward with fully equipped patient beds" widths={[300, 600]} sizes="(min-width: 1024px) 20vw, 50vw" class="mt-8 aspect-square rounded-2xl object-cover" />
+      </div>
+    </div>
+
+    <div class="lg:col-span-7">
+      <div class="grid gap-4 sm:grid-cols-2">
+        {
+          categories.map((c) => (
+            <div class="flex gap-4 rounded-2xl border border-slate-200 bg-white p-5 transition hover:border-teal-300 hover:shadow-md">
+              <span class="flex size-12 shrink-0 items-center justify-center rounded-xl bg-teal-50 text-teal-700">
+                <Icon name={c.icon} />
+              </span>
+              <div>
+                <h3 class="font-bold">{c.title}</h3>
+                <p class="mt-1 text-sm leading-relaxed text-slate-500">{c.text}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+      <div class="mt-6 flex flex-col items-start gap-4 rounded-2xl bg-navy-900 p-6 text-white sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <p class="text-lg font-bold">Can’t see what you need?</p>
+          <p class="text-sm text-navy-100">Tell us what you’re looking for and we’ll source it for you.</p>
+        </div>
+        <a href="#contact" data-interest="Equipment quote" class="inline-flex shrink-0 items-center gap-2 rounded-full bg-teal-500 px-6 py-3 font-semibold text-navy-950 transition hover:bg-teal-400">
+          Request a Quote <Icon name="arrow" class="size-4" />
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

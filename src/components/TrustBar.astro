@@ -1,0 +1,28 @@
+---
+import Icon from './Icon.astro';
+
+const items = [
+  { icon: 'shield', title: 'Quality assured', text: 'Genuine products from trusted brands' },
+  { icon: 'truck', title: 'Reliable delivery', text: 'Supplied on time, installed right' },
+  { icon: 'award', title: 'Clinical expertise', text: 'Guidance from experienced clinicians' },
+  { icon: 'clock', title: 'Responsive support', text: 'Real people, ready to help' },
+] as const;
+---
+
+<section class="border-y border-slate-200 bg-white">
+  <div class="mx-auto grid max-w-7xl grid-cols-2 gap-x-6 gap-y-8 px-5 py-10 sm:px-8 lg:grid-cols-4">
+    {
+      items.map((i) => (
+        <div class="flex items-start gap-3.5">
+          <span class="flex size-11 shrink-0 items-center justify-center rounded-xl bg-navy-50 text-navy-700">
+            <Icon name={i.icon} class="size-5" />
+          </span>
+          <div>
+            <p class="font-bold text-navy-950">{i.title}</p>
+            <p class="mt-0.5 text-sm text-slate-500">{i.text}</p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>

@@ -1,0 +1,47 @@
+---
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
+import supplies from '../assets/images/outreach-supplies.jpg';
+import community from '../assets/images/outreach-community.jpg';
+import outreach from '../assets/images/outreach.jpg';
+
+const items = [
+  'Free health screenings (blood pressure, blood sugar, BMI and more)',
+  'Health education and awareness campaigns',
+  'Donation and distribution of medical supplies',
+  'Partnerships with NGOs, churches, schools and corporate CSR teams',
+];
+---
+
+<section id="outreach" class="bg-gradient-to-b from-teal-50/60 to-white py-20 sm:py-28">
+  <div class="mx-auto grid max-w-7xl items-center gap-14 px-5 sm:px-8 lg:grid-cols-2">
+    <div class="order-2 grid grid-cols-6 grid-rows-2 gap-4 lg:order-1">
+      <Image src={outreach} alt="Health worker taking a blood pressure reading at a community outreach" widths={[400, 800]} sizes="(min-width: 1024px) 33vw, 66vw" class="col-span-4 row-span-2 h-full min-h-72 rounded-3xl object-cover" />
+      <Image src={community} alt="Smiling children at a community health outreach" widths={[300, 500]} sizes="(min-width: 1024px) 16vw, 33vw" class="col-span-2 h-full rounded-3xl object-cover" />
+      <Image src={supplies} alt="Volunteers sorting boxes of medical supplies" widths={[300, 500]} sizes="(min-width: 1024px) 16vw, 33vw" class="col-span-2 h-full rounded-3xl object-cover" />
+    </div>
+    <div class="order-1 lg:order-2">
+      <p class="text-sm font-bold uppercase tracking-widest text-teal-600">Outreach Programs</p>
+      <h2 class="mt-3 text-3xl font-extrabold sm:text-4xl">Taking quality care to the community</h2>
+      <p class="mt-4 text-lg leading-relaxed text-slate-600">
+        Good health shouldn’t depend on where you live. Our outreach programs bring screenings, education and essential supplies
+        directly to underserved communities, and we partner with organisations that share that mission.
+      </p>
+      <ul class="mt-7 space-y-3.5">
+        {
+          items.map((i) => (
+            <li class="flex gap-3">
+              <span class="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-teal-600 text-white">
+                <Icon name="check" class="size-4" />
+              </span>
+              <span class="text-slate-700">{i}</span>
+            </li>
+          ))
+        }
+      </ul>
+      <a href="#contact" data-interest="Outreach partnership" class="mt-9 inline-flex items-center gap-2 rounded-full bg-navy-900 px-7 py-3.5 font-semibold text-white transition hover:bg-navy-800">
+        <Icon name="heart" class="size-5 text-teal-300" /> Partner on an outreach
+      </a>
+    </div>
+  </div>
+</section>

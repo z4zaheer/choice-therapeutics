@@ -1,0 +1,84 @@
+---
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
+import hero from '../assets/images/hero.jpg';
+
+const points = ['Genuine, quality-assured equipment', 'Installation, training & after-sales support', 'Experienced clinical professionals'];
+---
+
+<section id="top" class="relative overflow-hidden bg-gradient-to-b from-navy-50 via-white to-white">
+  <div class="pointer-events-none absolute -top-40 -right-40 size-[36rem] rounded-full bg-teal-200/40 blur-3xl"></div>
+  <div class="pointer-events-none absolute top-40 -left-40 size-[28rem] rounded-full bg-blue-200/40 blur-3xl"></div>
+
+  <div class="relative mx-auto grid max-w-7xl items-center gap-12 px-5 pt-12 pb-20 sm:px-8 lg:grid-cols-2 lg:gap-16 lg:pt-20 lg:pb-28">
+    <div>
+      <p class="inline-flex items-center gap-2 rounded-full border border-teal-200 bg-white px-3.5 py-1.5 text-xs font-semibold text-teal-700 shadow-sm">
+        <span class="size-2 rounded-full bg-teal-500"></span>
+        Your trusted healthcare partner
+      </p>
+      <h1 class="mt-6 text-4xl font-extrabold leading-[1.1] sm:text-5xl lg:text-6xl">
+        Choice <span class="bg-gradient-to-r from-teal-600 to-blue-700 bg-clip-text text-transparent">Therapeutics</span>
+      </h1>
+      <p class="mt-4 text-xl font-semibold text-navy-800 sm:text-2xl">Medical Equipment, Outreach &amp; Clinical Mentoring</p>
+      <p class="mt-5 max-w-xl text-lg leading-relaxed text-slate-600">
+        We equip hospitals, clinics and healthcare professionals with reliable medical equipment, bring care closer to
+        communities through outreach programs, and build clinical confidence through hands-on mentoring.
+      </p>
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <a
+          href="#contact"
+          data-interest="Equipment quote"
+          class="inline-flex items-center justify-center gap-2 rounded-full bg-teal-600 px-7 py-3.5 font-semibold text-white shadow-lg shadow-teal-600/30 transition hover:-translate-y-0.5 hover:bg-teal-700"
+        >
+          Request a Quote <Icon name="arrow" class="size-5" />
+        </a>
+        <a
+          href="#contact"
+          class="inline-flex items-center justify-center gap-2 rounded-full border border-navy-100 bg-white px-7 py-3.5 font-semibold text-navy-900 transition hover:border-navy-600"
+        >
+          <Icon name="mail" class="size-5 text-teal-600" /> Contact Us
+        </a>
+      </div>
+      <ul class="mt-9 space-y-3">
+        {
+          points.map((p) => (
+            <li class="flex items-center gap-3 text-slate-700">
+              <span class="flex size-6 shrink-0 items-center justify-center rounded-full bg-teal-100 text-teal-700">
+                <Icon name="check" class="size-4" />
+              </span>
+              {p}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="relative">
+      <div class="overflow-hidden rounded-3xl shadow-2xl shadow-navy-900/20 ring-1 ring-navy-900/5">
+        <Image
+          src={hero}
+          alt="Modern operating theatre fitted with medical equipment"
+          widths={[480, 800, 1200]}
+          sizes="(min-width: 1024px) 50vw, 100vw"
+          class="aspect-[4/3] w-full object-cover"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+      <div class="absolute -bottom-6 left-4 flex items-center gap-3 rounded-2xl bg-white p-4 shadow-xl ring-1 ring-slate-100 sm:-left-6">
+        <span class="flex size-11 items-center justify-center rounded-xl bg-teal-600 text-white"><Icon name="shield" /></span>
+        <div>
+          <p class="text-sm font-bold text-navy-950">Quality you can trust</p>
+          <p class="text-xs text-slate-500">Sourced from reputable manufacturers</p>
+        </div>
+      </div>
+      <div class="absolute -top-5 right-4 hidden items-center gap-3 rounded-2xl bg-navy-900 p-4 text-white shadow-xl sm:flex">
+        <span class="flex size-11 items-center justify-center rounded-xl bg-white/10 text-teal-300"><Icon name="wrench" /></span>
+        <div>
+          <p class="text-sm font-bold">Ongoing support</p>
+          <p class="text-xs text-navy-100">Setup, training &amp; servicing</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

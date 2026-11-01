@@ -1,0 +1,38 @@
+---
+import Logo from './Logo.astro';
+
+const email = 'ayomideadeyeye21@gmail.com';
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-black pt-16 pb-28 text-slate-400 lg:pb-12">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="lg:col-span-2">
+        <Logo dark />
+        <p class="mt-5 max-w-sm leading-relaxed">
+          Medical equipment, community outreach and clinical mentoring. Helping healthcare providers deliver better care.
+        </p>
+      </div>
+      <div>
+        <h4 class="font-semibold text-white">Services</h4>
+        <ul class="mt-4 space-y-2.5 text-sm">
+          <li><a href="#equipment" class="hover:text-teal-300">Medical Equipment</a></li>
+          <li><a href="#outreach" class="hover:text-teal-300">Outreach Programs</a></li>
+          <li><a href="#mentoring" class="hover:text-teal-300">Clinical Mentoring</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-white">Get in touch</h4>
+        <ul class="mt-4 space-y-2.5 text-sm">
+          <li><a href="#contact" class="hover:text-teal-300">Request a Quote</a></li>
+          <li><a href={`mailto:${email}`} class="break-all hover:text-teal-300">{email}</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-12 flex flex-col gap-2 border-t border-white/10 pt-6 text-sm sm:flex-row sm:justify-between">
+      <p>&copy; {year} Choice Therapeutics. All rights reserved.</p>
+      <a href="#top" class="hover:text-teal-300">Back to top ↑</a>
+    </div>
+  </div>
+</footer>

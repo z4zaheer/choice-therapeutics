@@ -1,0 +1,79 @@
+---
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
+import clinician from '../assets/images/clinician.jpg';
+
+const pillars = [
+  {
+    icon: 'shield',
+    title: 'Reliability',
+    text: 'Genuine, quality-assured products from reputable manufacturers, delivered when you need them, with transparent pricing.',
+  },
+  {
+    icon: 'award',
+    title: 'Expertise',
+    text: 'A team with real clinical experience that understands your environment and recommends what actually works.',
+  },
+  {
+    icon: 'wrench',
+    title: 'Support',
+    text: 'Installation, user training and after-sales service. We stay with you long after delivery.',
+  },
+] as const;
+
+const steps = [
+  { title: 'Tell us your needs', text: 'Share what you need by form, email or phone.' },
+  { title: 'Get a tailored quote', text: 'Clear recommendations and transparent pricing.' },
+  { title: 'Delivery & setup', text: 'We deliver, install and train your team.' },
+  { title: 'Ongoing support', text: 'Servicing, refresher training and help when you need it.' },
+];
+---
+
+<section id="why-us" class="bg-slate-50 py-20 sm:py-28">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="grid items-center gap-14 lg:grid-cols-2">
+      <div class="relative">
+        <Image src={clinician} alt="Smiling healthcare professional with a stethoscope" widths={[500, 900]} sizes="(min-width: 1024px) 45vw, 100vw" class="aspect-[4/5] w-full rounded-3xl object-cover object-top sm:aspect-[4/3] lg:aspect-[4/5]" />
+        <div class="absolute right-4 bottom-4 left-4 rounded-2xl bg-white/95 p-5 shadow-xl backdrop-blur sm:right-auto sm:max-w-xs">
+          <p class="text-sm font-semibold text-teal-700">Our promise</p>
+          <p class="mt-1 font-bold text-navy-950">Healthcare partners you can count on, before, during and after every order.</p>
+        </div>
+      </div>
+      <div>
+        <p class="text-sm font-bold uppercase tracking-widest text-teal-600">Why Choose Us</p>
+        <h2 class="mt-3 text-3xl font-extrabold sm:text-4xl">Built on reliability, expertise and support</h2>
+        <p class="mt-4 text-lg text-slate-600">Medical buyers can’t afford guesswork. Here’s what you can expect when you work with Choice Therapeutics.</p>
+        <div class="mt-9 space-y-5">
+          {
+            pillars.map((p) => (
+              <div class="flex gap-5 rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
+                <span class="flex size-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-teal-500 to-blue-700 text-white">
+                  <Icon name={p.icon} />
+                </span>
+                <div>
+                  <h3 class="text-lg font-bold">{p.title}</h3>
+                  <p class="mt-1 leading-relaxed text-slate-600">{p.text}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-20">
+      <h3 class="text-center text-2xl font-extrabold sm:text-3xl">How it works</h3>
+      <ol class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          steps.map((s, i) => (
+            <li class="relative rounded-2xl bg-white p-6 ring-1 ring-slate-200">
+              <span class="flex size-10 items-center justify-center rounded-full bg-navy-900 text-sm font-bold text-white">{i + 1}</span>
+              <h4 class="mt-4 font-bold">{s.title}</h4>
+              <p class="mt-1 text-sm leading-relaxed text-slate-600">{s.text}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </div>
+</section>
